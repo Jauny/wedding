@@ -1,0 +1,40 @@
+/* RESET */
+body {
+  text-align: center;
+  margin: 0;
+}
+
+/* RANDOM */
+.hr {
+  border-top: 4px solid red;
+  border-bottom: 4px solid blue;
+  height: 4px;
+  background-color: white;
+}
+
+/* HEADER */
+.header {
+  background-color: pink;
+  margin: auto;
+}
+.header .menu {
+  max-width: 760px;
+  margin: auto;
+  display: flex;
+  flex-flow: row-reverse;
+}
+.header .menu ul {
+  padding: 0;
+  list-style: none;
+}
+.header .menu ul li {
+  display: inline-block;  
+}
+
+
+/* CONTENT */
+.hero {
+  min-height: 500px;
+  background-color: pink;
+  display: flex;
+}
