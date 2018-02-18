@@ -2,6 +2,81 @@
 
 {% block content %}
   <div class="hero">
-    <h1>hello world</h1>
+    <img src="http://via.placeholder.com/760x500/ffc0cb/222222.png">
+  </div>
+
+  <div class="info">
+    <div class="block">
+      <div class="title">When</div>
+      <div class="content">
+        <div>December 1, 2018 | 4 PM ceremony</div>
+        <div>reception to follow</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="title">Where</div>
+      <div class="content">
+        <div>The parker palm springs</div>
+        <div>4200 E Palm Canyon Drive</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="title">Dress</div>
+      <div class="content">
+        <div>Cocktail Attire</div>
+        <div>Bring a warm jacket</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="title">RSVP</div>
+      <div class="content">
+        <div>By Janyary 22</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <button class="cta--positive">count me in</button>
+      <button class="cta--negative">count me out :(</button>
+    </div>
+  </div>
+
+  <div class="mosaic">
+    <div class="row">
+      {%- for i in range(3) %}
+        {% set url = "http://via.placeholder.com/250x250/{}/222222.png".format(
+                        'ff6347' if i % 2 == 0 else 'ffc0cb') %}
+        <div class="cell"><img src="{{url}}"></div>
+      {%- endfor %}
+    </div>
+
+    <div class="row">
+      {%- for i in range(3) %}
+        {% set url = "http://via.placeholder.com/250x250/{}/222222.png".format(
+                        'ff6347' if i % 2 != 0 else 'ffc0cb') %}
+        <div class="cell"><img src="{{url}}"></div>
+      {%- endfor %}
+    </div>
+  </div>
+
+  <div class="song">
+    <img src="http://via.placeholder.com/250x250/ff6347/222222.png">
+    <form>
+      <div class="input">
+        <label>
+          Song Request
+        </label>
+          <input type="text" name="title">
+      </div>
+      <div class="input">
+        <label>
+          Artist
+        </label>
+          <input type="text" name="artist">
+      </div>
+      <button class="cta--positive">Request</button>
+    </form>
   </div>
 {% endblock %}

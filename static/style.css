@@ -1,6 +1,21 @@
+/* VARIABLES */
+:root {
+  --base-spacing: 50px;
+  --input-width: 150px;
+  --input-height: 40px;
+
+  --title-size: 1.5em;
+  --content-size: 1em;
+
+  --header-color: pink;
+  --main-red: tomato;
+  --light-grey: #f8f8f8;
+  --space-blue: midnightblue;
+
+}
+
 /* RESET */
 body {
-  text-align: center;
   margin: 0;
 }
 
@@ -12,29 +27,111 @@ body {
   background-color: white;
 }
 
+form {
+  display: flex;
+  align-items: flex-end;
+}
+form .input, form button {
+  margin-left: calc(var(--base-spacing) / 2);
+}
+label {
+  display: block;
+}
+input {
+  height: var(--input-height);
+  width: var(--input-width);
+  box-sizing: border-box;
+}
+
+button {
+  height: var(--input-height);
+  width: var(--input-width);
+  border: 2px solid var(--main-red);
+  cursor: pointer;
+  text-transform: uppercase;
+}
+button.cta--positive {
+  background-color: var(--main-red);
+}
+
 /* HEADER */
 .header {
-  background-color: pink;
-  margin: auto;
+  overflow: auto;
+  background-color: var(--header-color);
 }
 .header .menu {
-  max-width: 760px;
-  margin: auto;
   display: flex;
-  flex-flow: row-reverse;
+  justify-content: flex-end;
+  padding: 10px var(--base-spacing);
 }
 .header .menu ul {
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 .header .menu ul li {
-  display: inline-block;  
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* FOOTER */
+.footer {
+  background-color: var(--space-blue);
+  color: white;
+  padding: var(--base-spacing);
 }
 
 
 /* CONTENT */
 .hero {
-  min-height: 500px;
-  background-color: pink;
+  overflow: hidden;
+  background-color: red;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  max-width: 1024px;
+  display: block;
+  margin: auto;
+}
+
+.block {
+  margin-bottom: var(--base-spacing);
+}
+.block:first-of-type {
+  margin-top: var(--base-spacing);
+}
+.info {
+  text-align: center;
+  text-transform: uppercase;
+}
+.info .title {
+  font-size: var(--title-size);
+}
+.info .content {
+  font-size: var(--content-size);
+}
+
+.mosaic .row {
   display: flex;
+}
+.mosaic .row .cell {
+  flex-grow: 1;
+}
+.mosaic .row .cell img {
+  width: 100%;
+  display: block;
+}
+
+.song {
+  padding-top: var(--base-spacing);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.song .input {
+  display: inline-block;
+}
+.song .input label {
+  display: block;
 }
