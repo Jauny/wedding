@@ -12,8 +12,11 @@ def send_email(to_email, subject, html_body):
     """Send email to to_email, with subject and body."""
     logger.info('sending email', to_email=to_email, subject=subject)
 
-    mail = Mail(FROM_EMAIL, subject, to_email,
-                Content("text/html", html_body))
+    mail = Mail(
+      Email(FROM_EMAIL),
+      subject,
+      Email(to_email),
+      Content("text/plain", html_body))
 
     response = sg.client.mail.send.post(request_body=mail.get())
 
