@@ -1,2 +1,2 @@
 run:
-	FLASK_APP=server.py flask run
+	. config.env && FLASK_APP=server.py flask run
