@@ -1,5 +1,5 @@
 run:
-	. config.env && FLASK_APP=server.py flask run
+	python run.py
 
 clean:
 	find . -name \*.pyc -delete

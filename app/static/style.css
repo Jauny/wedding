@@ -7,7 +7,7 @@
   --title-size: 1.5em;
   --content-size: 1em;
 
-  --header-color: pink;
+  --header-color: #fae2d8;
   --main-red: tomato;
   --light-grey: #f8f8f8;
   --space-blue: midnightblue;
@@ -85,7 +85,7 @@ button.cta--positive {
 /* CONTENT */
 .hero {
   overflow: hidden;
-  background-color: red;
+  background-color: var(--header-color);
 }
 .hero img {
   width: 100%;

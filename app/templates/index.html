@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="hero">
-    <img src="http://via.placeholder.com/760x500/ffc0cb/222222.png">
+    <img src="{{ url_for('static', filename='HeroImage.jpg') }}">
   </div>
 
   <div class="info">
@@ -45,19 +45,15 @@
 
   <div class="mosaic">
     <div class="row">
-      {%- for i in range(3) %}
-        {% set url = "http://via.placeholder.com/250x250/{}/222222.png".format(
-                        'ff6347' if i % 2 == 0 else 'ffc0cb') %}
-        <div class="cell"><img src="{{url}}"></div>
-      {%- endfor %}
+      <div class="cell"><img src="{{url_for('static', filename='Stay.jpg')}}"></div>
+      <div class="cell"><img src="{{url_for('static', filename='Fly.jpg')}}"></div>
+      <div class="cell"><img src="{{url_for('static', filename='Play.jpg')}}"></div>
     </div>
 
     <div class="row">
-      {%- for i in range(3) %}
-        {% set url = "http://via.placeholder.com/250x250/{}/222222.png".format(
-                        'ff6347' if i % 2 != 0 else 'ffc0cb') %}
-        <div class="cell"><img src="{{url}}"></div>
-      {%- endfor %}
+      <div class="cell"><img src="{{url_for('static', filename='visit.jpg')}}"></div>
+      <div class="cell"><img src="{{url_for('static', filename='relax.jpg')}}"></div>
+      <div class="cell"><img src="{{url_for('static', filename='eat.jpg')}}"></div>
     </div>
   </div>
 
