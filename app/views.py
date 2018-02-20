@@ -6,12 +6,12 @@ from app import app
 log = logging.getLogger(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/rsvp', methods=['POST'])
+@app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
     """RSVP to an invitation."""
     if request.method != 'POST':
@@ -25,6 +25,8 @@ def rsvp():
             errors.append(k)
     if len(errors) > 0:
         return render_template('index.html', errors=errors)
+
+    rsvp = None
 
     # if fast rsvp
     if request.form.get('fast-rsvp'):

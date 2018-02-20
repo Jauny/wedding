@@ -41,7 +41,15 @@
     </div>
 
     <div class="block">
+      {% if errors %}
+        <ul>
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
       <form action="{{url_for('rsvp')}}" method="post">
+        <input name="email"></input><button type="submit">submit</button>
         <button name="fast-rsvp" value="yes" class="cta--positive">count me in</button>
         <button name="fast-rsvp" value="no" class="cta--negative">count me out :(</button>
       </form>
