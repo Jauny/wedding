@@ -42,6 +42,17 @@ body {
   background-color: white;
 }
 
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 form {
   display: flex;
   align-items: flex-end;
@@ -112,6 +123,7 @@ button.cta--positive:hover {
 .header .menu ul li {
   display: inline-block;
   margin-left: 10px;
+  text-transform: uppercase;
 }
 
 /* FOOTER */
