@@ -41,8 +41,10 @@
     </div>
 
     <div class="block">
-      <button class="cta--positive">count me in</button>
-      <button class="cta--negative">count me out :(</button>
+      <form action="{{url_for('rsvp')}}" method="post">
+        <button name="fast-rsvp" value="yes" class="cta--positive">count me in</button>
+        <button name="fast-rsvp" value="no" class="cta--negative">count me out :(</button>
+      </form>
     </div>
   </div>
 
