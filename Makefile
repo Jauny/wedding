@@ -6,3 +6,6 @@ test:
 
 clean:
 	find . -name \*.pyc -delete
+
+heroku:
+	git push heroku master
