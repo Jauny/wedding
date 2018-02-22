@@ -206,7 +206,14 @@ button.cta--positive:hover {
   justify-content: space-around;
   align-items: center;
   overflow: auto;
+  padding-top: calc(var(--base-spacing) / 2);
   background: white;
+  background-image: url(/static/presents.png);
+  background-repeat: no-repeat;
+  min-height: 200px;
+  background-size: 200px;
+  background-position-x: 50px;
+  background-position-y: bottom;
 }
 .presents .input {
   display: inline-block;
