@@ -1,12 +1,14 @@
 # using SendGrid's Python Library
 # https://github.com/sendgrid/sendgrid-python
-from app import config, logger
+import os
 import sendgrid
-from sendgrid.helpers.mail import *
+from app import logger
+from sendgrid.helpers.mail import Mail, Email, Content  # noqa
 
-sg = sendgrid.SendGridAPIClient(apikey=config.get('SENDGRID_API_KEY'))
+sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
 
 FROM_EMAIL = 'jypepin@gmail.com'
+
 
 def send_email(to_email, subject, html_body):
     """Send email to to_email, with subject and body."""

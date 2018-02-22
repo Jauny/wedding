@@ -1,3 +1,4 @@
+import os
 import logging
 from flask import Flask
 
@@ -9,6 +10,6 @@ app = Flask(__name__)
 
 app.config.from_pyfile('config.cfg')
 config = app.config
-app.secret_key = config.get('SECRET_KEY')
+app.secret_key = os.environ.get('SECRET_KEY')
 
 from app import views  # noqa

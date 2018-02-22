@@ -1,17 +1,19 @@
-from app import config, logger
+import os
 
 import urllib2
 
-API_KEY = '?api_key={key}'.format(key=config.get('AIRTABLE_API_KEY'))
+API_KEY = '?api_key={key}'.format(key=os.environ.get('AIRTABLE_API_KEY'))
 BASE_URL = 'https://api.airtable.com/v0/appHYpokKOhNqlM7m'
+
 
 def build_url(table, id=None):
     """Return full request url for table."""
     base = '{}/{}'.format(BASE_URL, table)
     if id:
-      base = '{}/{}'.format(base, id)
+        base = '{}/{}'.format(base, id)
 
     return '{}{}'.format(base, API_KEY)
+
 
 def get_record(email):
     """Get a record from email."""
@@ -19,6 +21,7 @@ def get_record(email):
     response = urllib2.urlopen(url)
     data = response.get('records')[0]
     return data
+
 
 def rsvp(email, response, **kwargs):
     """Updates a row in airtable for email's rsvp."""
