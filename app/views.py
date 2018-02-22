@@ -17,6 +17,7 @@ def rsvp():
     if request.method != 'POST':
         log.warning('received non-POST request to /rsvp')
         return redirect(url_for('index'))
+    import pdb; pdb.set_trace()
 
     # check for missing form elements
     errors = []
