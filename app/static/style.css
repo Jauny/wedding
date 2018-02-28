@@ -167,6 +167,20 @@ button.cta--positive:hover {
   margin: auto;
 }
 
+@media only screen and (max-width: 720px) {
+  .hero .title {
+    margin-top: 10px;
+    font-size: 0.8em;
+  }
+  .hero .title span {
+    font-size: 2em;
+  }
+  .hero img {
+    width: 150%;
+    margin-left: -15%;
+  }
+}
+
 .block {
   margin-bottom: var(--base-spacing);
 }
