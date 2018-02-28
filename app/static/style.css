@@ -36,9 +36,9 @@ body {
 
 /* RANDOM */
 .hr {
-  border-top: 5px solid var(--main-red);
-  border-bottom: 5px solid var(--space-blue);
-  height: 5px;
+  border-top: 6px solid var(--main-red);
+  border-bottom: 6px solid var(--space-blue);
+  height: 6px;
   background-color: white;
 }
 
