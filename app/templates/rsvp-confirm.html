@@ -4,8 +4,10 @@
   <div class="rsvp--form">
 
     <form action="{{ url_for('rsvp_confirm') }}" method="POST">
-      <div class="rsvp--form__title">Hi {{ name }}!</div>
+      <div class="rsvp--form__title">Hi {{ invite.name }}!</div>
+
       <div class="rsvp--form__radio">
+        <input type="email" name="email" value="{{invite.email}}" hidden>
         <label>Will you be attending the wedding?</label>
         <div class="radio-button">
           <input required id="rsvpyes" type="radio" name="rsvp" value="yes">
@@ -19,13 +21,14 @@
 
       {% if plusone %}
         <div class="rsvp--form__radio">
-          <label>Will {{ plusone }} be joining as well?</label>
+          <input type="email" name="plusone_email" value="{{plusone.email}}" hidden>
+          <label>Will {{ plusone.name }} be joining as well?</label>
           <div class="radio-button">
-            <input required id="plusoneyes" type="radio" name="plusone" value="yes">
+            <input required id="plusoneyes" type="radio" name="plusone_rsvp" value="yes">
             <label for="plusoneyes">Count them in</label>
           </div>
           <div class="radio-button">
-            <input required id="plusoneno" type="radio" name="plusone" value="no">
+            <input required id="plusoneno" type="radio" name="plusone_rsvp" value="no">
             <label for="plusoneno">Count them out</label>
           </div>
         </div>
