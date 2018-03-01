@@ -9,7 +9,7 @@
 /* VARIABLES */
 :root {
   --base-spacing: 50px;
-  --input-width: 150px;
+  --input-width: 250px;
   --input-height: 40px;
 
   --title-size: 2em;
@@ -18,7 +18,8 @@
   --bg-color: #f5f5f5;
   --header-color: #fae2d8;
   --main-red: #e94d10;
-  --light-grey: #f8f8f8;
+  --light-grey: #e8e8e8;
+  --dark-grey: #999;
   --space-blue: #080e6c;
 }
 
@@ -53,50 +54,73 @@ a:visited {
   color: inherit;
 }
 
-form {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-form .input, form button {
-  margin-left: calc(var(--base-spacing) / 2);
-}
-label {
-  display: block;
-}
-input {
+/* FORMS */
+input, button, .button, .radio-button label {
   height: var(--input-height);
   width: var(--input-width);
+  margin: 10px 0 0 0;
   box-sizing: border-box;
 }
 
-button {
-  height: var(--input-height);
-  width: var(--input-width);
-  border: 2px solid var(--main-red);
+input {
+  padding: 10px;
+  border: 2px solid var(--light-grey);
+}
+input:focus {
+  outline: 2px solid var(--main-red);
+}
+
+button, .button, .radio-button label {
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  line-height: var(--input-height);
+  font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
-  color: var(--main-red);
-  font-family: 'Montserrat', sans-serif;
   font-size: var(--content-size);
 }
-button:focus {
+button, .button {
+  background-color: var(--main-red);
+  color: white;
+}
+button:focus, .button:focus {
   outline: none;
 }
-button:active {
+button:active, .button:active {
   transform: translate(1px, 1px);
 }
-button:hover {
-  color: white;
-  background-color: var(--main-red);
-}
-button.cta--positive {
-  background-color: var(--main-red);
-  color: white;
-}
-button.cta--positive:hover {
+button:hover, button:hover {
   background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
-  border-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+}
+form:invalid button {
+  background-color: var(--dark-grey);
+}
+
+.radio-button label {
+  padding: 0 10px;
+  border: 2px solid var(--light-grey);
+  color: var(--main-red);
+}
+.radio-button label:hover {
+  border: 2px solid var(--main-red);
+}
+.radio-button input[type=radio]:checked ~ label {
+  border: 2px solid var(--main-red);
+}
+.radio-button input[type=radio] {
+  display: none;
+}
+
+label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.form__error {
+  color: var(--main-red);
+  font-size: 0.8em;
+  margin-top: 5px;
 }
 
 /* HEADER */
@@ -147,7 +171,7 @@ button.cta--positive:hover {
   text-align: center;
   color: var(--main-red);
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 2px;
   margin-top: var(--base-spacing);
 }
@@ -199,7 +223,7 @@ button.cta--positive:hover {
 }
 .info .content {
   font-size: var(--content-size);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 18px;
   text-transform: uppercase;
 }
@@ -234,4 +258,28 @@ button.cta--positive:hover {
 }
 .presents .input label {
   display: block;
+}
+
+/* RSVP */
+.rsvp--form {
+  background-color: white;
+}
+.rsvp--form form {
+  padding: var(--base-spacing) 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+}
+.rsvp--form__title {
+  color: var(--main-red);
+  font-size: 2.5em;
+  font-family: 'Abril Fatface', cursive;
+}
+.rsvp--form__radio {
+  margin-top: calc(var(--base-spacing) / 2);
+}
+.rsvp--form__radio__title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }

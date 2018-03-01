@@ -1,7 +1,8 @@
 import logging
-from flask import flash, redirect, render_template, request, url_for
+from flask import redirect, render_template, request, url_for
 
 from app import app
+# from app.models.invites import Invite
 
 log = logging.getLogger(__name__)
 
@@ -14,35 +15,44 @@ def index():
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
     """RSVP to an invitation."""
-    if request.method != 'POST':
-        log.warning('received non-POST request to /rsvp')
-        return redirect(url_for('index'))
+    if request.method == 'GET':
+        return render_template('rsvp.html')
 
-    # check for missing form elements
-    errors = []
-    for k, v in request.form.iteritems():
-        if len(v) == 0:
-            errors.append(k)
-    if len(errors) > 0:
-        return render_template('index.html', errors=errors)
+    # find invitation for email
+    # email = request.form.get('email')
+    # invite = Invite.getFromEmail(email)
+    invite = None
 
-    rsvp = None
+    if not invite:
+        return render_template(
+            'rsvp.html',
+            error='We don\'t have this email. Do you have another email?')
 
-    # if fast rsvp
-    if request.form.get('fast-rsvp'):
-        rsvp = True if request.form['fast-rsvp'] == "yes" else False
-    # if full form
+    return render_template('rsvp-confirm.html', invite=invite)
+
+
+@app.route('/rsvp_confirm', methods=['GET', 'POST'])
+def rsvp_confirm():
+    """Confirm RSVP with details."""
+    if request.method == 'GET':
+        return render_template(
+            'rsvp-confirm.html',
+            name='Jonathan',
+            plusone='Jessica')
+        # return redirect(url_for('rsvp'))
+
+    rsvp = request.form.get('rsvp')
+    plusone = request.form.get('plusone')
+    rehearsal = request.form.get('rehearsal')
+
+    # update rsvp invite
+    # update plusone invite
+
+    if rsvp == 'yes':
+        message = 'Hooray! We will see you in Palm Springs.'
     else:
-        pass
+        message = 'Oh no! We will miss you.'
 
-    # do something to register the rsvp
-
-    # redirect to index
-    if rsvp:
-        flash(
-            'RSVP registered, see you in Palm Springs ;)')
-    else:
-        flash(
-            'Sorry to hear you won\'t make it. We\'ll have you in spirit! :)')
-
-    return redirect(url_for('index'))
+    return render_template(
+        'rsvp_done.html',
+        message=message)

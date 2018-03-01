@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="rsvp--form">
+
+    <form action="{{ url_for('rsvp_confirm') }}" method="POST">
+      <div class="rsvp--form__title">Hi {{ name }}!</div>
+      <div class="rsvp--form__radio">
+        <label>Will you be attending the wedding?</label>
+        <div class="radio-button">
+          <input required id="rsvpyes" type="radio" name="rsvp" value="yes">
+          <label for="rsvpyes">Count me in</label>
+        </div>
+        <div class="radio-button">
+          <input required id="rsvpno" type="radio" name="rsvp" value="no">
+          <label for="rsvpno">Count me out</label>
+        </div>
+      </div>
+
+      {% if plusone %}
+        <div class="rsvp--form__radio">
+          <label>Will {{ plusone }} be joining as well?</label>
+          <div class="radio-button">
+            <input required id="plusoneyes" type="radio" name="plusone" value="yes">
+            <label for="plusoneyes">Count them in</label>
+          </div>
+          <div class="radio-button">
+            <input required id="plusoneno" type="radio" name="plusone" value="no">
+            <label for="plusoneno">Count them out</label>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="rsvp--form__radio">
+        <label>Will you be attending the rehearsal dinner Friday evening?</label>
+        <div class="radio-button">
+          <input required id="rehearsalyes" type="radio" name="rehearsal" value="yes">
+          <label for="rehearsalyes">Count me in</label>
+        </div>
+        <div class="radio-button">
+          <input required id="rehearsalno" type="radio" name="rehearsal" value="no">
+          <label for="rehearsalno">Count me out</label>
+        </div>
+      </div>
+
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+{% endblock content %}

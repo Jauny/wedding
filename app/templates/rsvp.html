@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="rsvp--form">
+    <form action="{{ url_for('rsvp') }}" method="POST">
+      <label>What's your email?</label>
+      <input name="email" type="email" placeholder="Email" required />
+      {% if error %}
+        <div class="form__error">{{ error }}</div>
+      {% endif %}
+      <button type="submit">NEXT</button>
+    </form>
+  </div>
+{% endblock content %}
