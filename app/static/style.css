@@ -294,9 +294,13 @@ label {
   color: var(--main-red);
   font-size: 2.5em;
   font-family: 'Abril Fatface', cursive;
+  margin-bottom: calc(var(--base-spacing) / 2);
 }
 .rsvp--form__radio {
-  margin-top: calc(var(--base-spacing) / 2);
+  margin-bottom: calc(var(--base-spacing) / 2);
+}
+.rsvp--form__radio > label {
+  line-height: 1.5em;
 }
 .rsvp--form__radio__title {
   font-family: 'Libre Baskerville', serif;
