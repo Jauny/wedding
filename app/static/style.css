@@ -51,7 +51,7 @@ a:hover {
 }
 a:visited {
   text-decoration: none;
-  color: inherit;
+  color: var(--main-red);;
 }
 
 /* FORMS */
@@ -96,7 +96,8 @@ button:hover, button:hover {
   background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
 }
 form:invalid button {
-  background-color: var(--dark-grey);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .radio-button label {
