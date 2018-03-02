@@ -89,6 +89,9 @@ button:focus, .button:focus {
 button:active, .button:active {
   transform: translate(1px, 1px);
 }
+.button:visited {
+  color: white;
+}
 button:hover, button:hover {
   background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
 }
@@ -208,24 +211,23 @@ label {
 .block {
   margin-bottom: var(--base-spacing);
 }
-.block:first-of-type {
-  margin-top: var(--base-spacing);
-}
 .info {
   text-align: center;
   overflow: auto;
   background: white;
+  padding-top: var(--base-spacing);
 }
-.info .title {
+.info .block .content {
+  text-transform: uppercase;
+}
+.block .title {
   font-size: var(--title-size);
   font-family: 'Libre Baskerville', serif;
   margin-bottom: 10px;
 }
-.info .content {
+.block .content {
   font-size: var(--content-size);
-  font-weight: 400;
   line-height: 18px;
-  text-transform: uppercase;
 }
 
 .mosaic .row {
@@ -233,6 +235,21 @@ label {
 }
 .mosaic .row .cell {
   flex-grow: 1;
+  position: relative;
+}
+.mosaic .row .cell .block {
+  position: absolute;
+  padding: 15px;
+}
+.mosaic .row .cell .block .content {
+  font-weight: 600;
+}
+.mosaic .row .cell .block a {
+  margin-top: 5px;
+  color: var(--main-red);
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
 }
 .mosaic .row .cell img {
   width: 100%;
@@ -241,17 +258,19 @@ label {
 
 .presents {
   display: flex;
+  position: relative;
+  overflow: visible;
   justify-content: space-around;
   align-items: center;
-  overflow: auto;
   padding-top: calc(var(--base-spacing) / 2);
   background: white;
-  background-image: url(/static/presents.png);
-  background-repeat: no-repeat;
   min-height: 200px;
-  background-size: 200px;
-  background-position-x: 50px;
-  background-position-y: bottom;
+}
+.presents img {
+  position: absolute;
+  max-height: 200px;
+  bottom: -13px;
+  left: 50px;
 }
 .presents .input {
   display: inline-block;
