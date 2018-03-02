@@ -11,11 +11,11 @@
         <label>Will you be attending the wedding?</label>
         <div class="radio-button">
           <input required id="rsvpyes" type="radio" name="rsvp" value="yes">
-          <label for="rsvpyes">Count me in</label>
+          <label for="rsvpyes" class="happy">Count me in</label>
         </div>
         <div class="radio-button">
           <input required id="rsvpno" type="radio" name="rsvp" value="no">
-          <label for="rsvpno">Count me out</label>
+          <label for="rsvpno" class="sad">Count me out</label>
         </div>
       </div>
 
@@ -25,11 +25,11 @@
           <label>Will {{ plusone.name }} be joining as well?</label>
           <div class="radio-button">
             <input required id="plusoneyes" type="radio" name="plusone_rsvp" value="yes">
-            <label for="plusoneyes">Count them in</label>
+            <label for="plusoneyes" class="happy">Count them in</label>
           </div>
           <div class="radio-button">
             <input required id="plusoneno" type="radio" name="plusone_rsvp" value="no">
-            <label for="plusoneno">Count them out</label>
+            <label for="plusoneno" class="sad">Count them out</label>
           </div>
         </div>
       {% endif %}
@@ -38,11 +38,11 @@
         <label>Will you be attending the rehearsal dinner Friday evening?</label>
         <div class="radio-button">
           <input required id="rehearsalyes" type="radio" name="rehearsal" value="yes">
-          <label for="rehearsalyes">Count me in</label>
+          <label for="rehearsalyes" class="happy">Count me in</label>
         </div>
         <div class="radio-button">
           <input required id="rehearsalno" type="radio" name="rehearsal" value="no">
-          <label for="rehearsalno">Count me out</label>
+          <label for="rehearsalno" class="sad">Count me out</label>
         </div>
       </div>
 

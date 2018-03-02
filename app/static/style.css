@@ -110,6 +110,15 @@ form:invalid button {
 }
 .radio-button input[type=radio]:checked ~ label {
   border: 2px solid var(--main-red);
+  background-repeat: no-repeat;
+  background-position: 210px;
+  background-size: 17px;
+}
+.radio-button input[type=radio]:checked ~ label.sad {
+  background-image: url('/static/sadface.png');
+}
+.radio-button input[type=radio]:checked ~ label.happy {
+  background-image: url('/static/check.png');
 }
 .radio-button input[type=radio] {
   display: none;
