@@ -69,6 +69,12 @@ def rsvp_confirm():
             'email': str(email),
             'rsvp': str(rsvp),
             'rehearsal': str(rehearsal)})
+    else:
+        logger.info({
+            'msg': 'updated rsvp',
+            'email': str(email),
+            'rsvp': str(rsvp),
+            'rehearsal': str(rehearsal)})
 
     # update plusone invite
     if plusone_email:
@@ -81,11 +87,16 @@ def rsvp_confirm():
         if resp.error:
             logger.error({
                 'msg': 'error updating plusone',
-                'error': resp.error,
-                'plusone': plusone_email,
-                'email': email,
-                'rsvp': plusone_rsvp,
-                'rehearsal': plusone_rehearsal})
+                'error': str(resp.error),
+                'email': str(plusone_email),
+                'rsvp': str(plusone_rsvp),
+                'rehearsal': str(plusone_rehearsal)})
+        else:
+            logger.info({
+                'msg': 'updated rsvp',
+                'email': str(plusone_email),
+                'rsvp': str(plusone_rsvp),
+                'rehearsal': str(plusone_rehearsal)})
 
     if rsvp == 'yes':
         message = 'Hooray! We will see you in Palm Springs.'
