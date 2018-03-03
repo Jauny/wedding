@@ -5,17 +5,17 @@ from app import app
 from app.helpers.logger import log_endpoint
 from app.models.invites import Invite
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 @app.route('/', methods=['GET'])
-@log_endpoint
+@log_endpoint(logger)
 def index():
     return render_template('index.html')
 
 
 @app.route('/rsvp', methods=['GET', 'POST'])
-@log_endpoint
+@log_endpoint(logger)
 def rsvp():
     """RSVP to an invitation."""
     if request.method == 'GET':
@@ -26,7 +26,7 @@ def rsvp():
     invite = Invite.getFromEmail(email)
 
     if not invite:
-        log.warning({
+        logger.warning({
             'msg': 'no invite found',
             'email': str(email)})
         return render_template(
@@ -35,7 +35,7 @@ def rsvp():
 
     plusone = Invite.getPlusoneFromInvite(invite)
     if not plusone:
-        log.info({
+        logger.info({
             'msg': 'no plusone found',
             'email': str(email)})
 
@@ -46,11 +46,11 @@ def rsvp():
 
 
 @app.route('/rsvp_confirm', methods=['GET', 'POST'])
-@log_endpoint
+@log_endpoint(logger)
 def rsvp_confirm():
     """Confirm RSVP with details."""
     if request.method == 'GET':
-        log.warning({
+        logger.warning({
             'msg': 'received GET to /rsvp_confirm'})
         return redirect(url_for('rsvp'))
 
@@ -63,7 +63,7 @@ def rsvp_confirm():
     # update rsvp invite
     resp = Invite.updateRSVPForEmail(email, rsvp, rehearsal)
     if resp.error:
-        log.error({
+        logger.error({
             'msg': 'error updating rsvp',
             'error': str(resp.error),
             'email': str(email),
@@ -79,7 +79,7 @@ def rsvp_confirm():
         resp = Invite.updateRSVPForEmail(
             plusone_email, plusone_rsvp, plusone_rehearsal)
         if resp.error:
-            log.error({
+            logger.error({
                 'msg': 'error updating plusone',
                 'error': resp.error,
                 'plusone': plusone_email,
