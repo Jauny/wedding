@@ -2,17 +2,20 @@ import logging
 from flask import redirect, render_template, request, url_for
 
 from app import app
+from app.helpers.logger import log_endpoint
 from app.models.invites import Invite
 
 log = logging.getLogger(__name__)
 
 
 @app.route('/', methods=['GET'])
+@log_endpoint
 def index():
     return render_template('index.html')
 
 
 @app.route('/rsvp', methods=['GET', 'POST'])
+@log_endpoint
 def rsvp():
     """RSVP to an invitation."""
     if request.method == 'GET':
@@ -23,11 +26,18 @@ def rsvp():
     invite = Invite.getFromEmail(email)
 
     if not invite:
+        log.warning({
+            'msg': 'no invite found',
+            'email': email})
         return render_template(
             'rsvp.html',
             error='We don\'t have this email. Do you have another email?')
 
     plusone = Invite.getPlusoneFromInvite(invite)
+    if not plusone:
+        log.info({
+            'msg': 'no plusone found',
+            'email': email})
 
     return render_template(
         'rsvp-confirm.html',
@@ -36,9 +46,12 @@ def rsvp():
 
 
 @app.route('/rsvp_confirm', methods=['GET', 'POST'])
+@log_endpoint
 def rsvp_confirm():
     """Confirm RSVP with details."""
     if request.method == 'GET':
+        log.warning({
+            'msg': 'received GET to /rsvp_confirm'})
         return redirect(url_for('rsvp'))
 
     email = request.form.get('email')
@@ -48,7 +61,14 @@ def rsvp_confirm():
     rehearsal = request.form.get('rehearsal')
 
     # update rsvp invite
-    Invite.updateRSVPForEmail(email, rsvp, rehearsal)
+    resp = Invite.updateRSVPForEmail(email, rsvp, rehearsal)
+    if resp.error:
+        log.error({
+            'msg': 'error updating rsvp',
+            'error': resp.error,
+            'email': email,
+            'rsvp': rsvp,
+            'rehearsal': rehearsal})
 
     # update plusone invite
     if plusone_email:
@@ -56,8 +76,16 @@ def rsvp_confirm():
             plusone_rehearsal = 'no'
         else:
             plusone_rehearsal = 'yes'
-        Invite.updateRSVPForEmail(
+        resp = Invite.updateRSVPForEmail(
             plusone_email, plusone_rsvp, plusone_rehearsal)
+        if resp.error:
+            log.error({
+                'msg': 'error updating plusone',
+                'error': resp.error,
+                'plusone': plusone_email,
+                'email': email,
+                'rsvp': plusone_rsvp,
+                'rehearsal': plusone_rehearsal})
 
     if rsvp == 'yes':
         message = 'Hooray! We will see you in Palm Springs.'
