@@ -28,7 +28,7 @@ def rsvp():
     if not invite:
         log.warning({
             'msg': 'no invite found',
-            'email': email})
+            'email': str(email)})
         return render_template(
             'rsvp.html',
             error='We don\'t have this email. Do you have another email?')
@@ -37,7 +37,7 @@ def rsvp():
     if not plusone:
         log.info({
             'msg': 'no plusone found',
-            'email': email})
+            'email': str(email)})
 
     return render_template(
         'rsvp-confirm.html',
@@ -65,10 +65,10 @@ def rsvp_confirm():
     if resp.error:
         log.error({
             'msg': 'error updating rsvp',
-            'error': resp.error,
-            'email': email,
-            'rsvp': rsvp,
-            'rehearsal': rehearsal})
+            'error': str(resp.error),
+            'email': str(email),
+            'rsvp': str(rsvp),
+            'rehearsal': str(rehearsal)})
 
     # update plusone invite
     if plusone_email:
