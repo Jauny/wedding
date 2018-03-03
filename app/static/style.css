@@ -240,28 +240,40 @@ label {
   line-height: 18px;
 }
 
-.mosaic .row {
+.mosaic {
   display: flex;
+  flex-wrap: wrap;
 }
-.mosaic .row .cell {
-  flex-grow: 1;
+.mosaic .cell {
+  flex-basis: calc(100% / 3);
   position: relative;
 }
-.mosaic .row .cell .block {
+@media only screen and (max-width: 720px) {
+  .mosaic .cell {
+    flex-basis: 50%;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .mosaic .cell {
+    flex-basis: 100%;
+  }
+}
+
+.mosaic .cell .block {
   position: absolute;
   padding: 15px;
 }
-.mosaic .row .cell .block .content {
+.mosaic .cell .block .content {
   font-weight: 600;
 }
-.mosaic .row .cell .block a {
+.mosaic .cell .block a {
   margin-top: 5px;
   color: var(--main-red);
   text-transform: uppercase;
   font-weight: 600;
   display: inline-block;
 }
-.mosaic .row .cell img {
+.mosaic .cell img {
   width: 100%;
   display: block;
 }
