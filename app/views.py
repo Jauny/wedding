@@ -62,7 +62,7 @@ def rsvp_confirm():
 
     # update rsvp invite
     resp = Invite.updateRSVPForEmail(email, rsvp, rehearsal)
-    if resp.error:
+    if resp.get('error', None):
         logger.error({
             'msg': 'error updating rsvp',
             'error': str(resp.error),
@@ -84,7 +84,7 @@ def rsvp_confirm():
             plusone_rehearsal = 'yes'
         resp = Invite.updateRSVPForEmail(
             plusone_email, plusone_rsvp, plusone_rehearsal)
-        if resp.error:
+        if resp.get('error', None):
             logger.error({
                 'msg': 'error updating plusone',
                 'error': str(resp.error),
