@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 @app.route('/', methods=['GET'])
 @log_endpoint(logger)
 def index():
-    return render_template('index.html', email=request.args.get('email'))
+    return render_template('index.html')
 
 
 @app.route('/rsvp', methods=['GET', 'POST'])
@@ -19,25 +19,38 @@ def index():
 def rsvp():
     """RSVP to an invitation."""
     if request.method == 'GET':
-        return render_template('rsvp.html')
+        email = request.args.get('email')
+        if email:
+            invite = Invite.getFromEmail(email)
 
-    # find invitation for email
-    email = request.form.get('email')
-    invite = Invite.getFromEmail(email)
+        if not invite:
+            logger.warning({
+                'msg': 'no invite found from email param',
+                'email': str(email)})
+            return render_template('rsvp.html')
 
-    if not invite:
-        logger.warning({
-            'msg': 'no invite found',
-            'email': str(email)})
-        return render_template(
-            'rsvp.html',
-            error='We don\'t have this email. Do you have another email?')
+        plusone = Invite.getPlusoneFromInvite(invite)
+        if not plusone:
+            logger.info({
+                'msg': 'no plusone found',
+                'email': str(email)})
 
-    plusone = Invite.getPlusoneFromInvite(invite)
-    if not plusone:
-        logger.info({
-            'msg': 'no plusone found',
-            'email': str(email)})
+    elif request.method == 'POST':
+        email = request.form.get('email')
+        invite = Invite.getFromEmail(email)
+        if not invite:
+            logger.warning({
+                'msg': 'no invite found',
+                'email': str(email)})
+            return render_template(
+                'rsvp.html',
+                error='We don\'t have this email. Do you have another email?')
+
+        plusone = Invite.getPlusoneFromInvite(invite)
+        if not plusone:
+            logger.info({
+                'msg': 'no plusone found',
+                'email': str(email)})
 
     return render_template(
         'rsvp-confirm.html',

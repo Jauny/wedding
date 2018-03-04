@@ -62,7 +62,7 @@ class Invite:
 
         resp = requests.get(cls.base_url, params=data)
         records = resp.json().get('records')
-        if len(records):
+        if records and len(records):
             return records[0]
         else:
             return None

@@ -10,10 +10,15 @@ def log_endpoint(logger):
             for k, v in request.form.iteritems():
                 form[str(k)] = str(v)
 
+            params = {}
+            for k, v in request.args.iteritems():
+                params[str(k)] = str(v)
+
             logger.info({
                 'msg': 'received {method} request to {endpoint}'.format(
                     method=request.method, endpoint=request.endpoint),
-                'form': form})
+                'form': form,
+                'params': params})
             return func(*args, **kwargs)
         return wrapper
     return actual_decorator

@@ -41,7 +41,7 @@
     </div>
 
     <div class="block">
-      <a href="{{ url_for('rsvp', email=email) }}" class="button">RSVP</a>
+      <a href="{{ url_for('rsvp', email=request.args.get('email')) }}" class="button">RSVP</a>
     </div>
   </div>
 
