@@ -290,15 +290,21 @@ label {
 }
 .presents img {
   position: absolute;
-  max-height: 200px;
+  height: 200px;
   bottom: -13px;
   left: 50px;
 }
-.presents .input {
-  display: inline-block;
+@media only screen and (max-width: 780px) {
+  .presents img {
+    position: relative;
+    left: 10px;
+  }
 }
-.presents .input label {
-  display: block;
+@media only screen and (max-width: 520px) {
+  .presents img {
+    height: 150px;
+    bottom: -35px;
+  }
 }
 
 /* RSVP */
