@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 @app.route('/', methods=['GET'])
 @log_endpoint(logger)
 def index():
-    return render_template('index.html')
+    return render_template('index.html', email=request.args.get('email'))
 
 
 @app.route('/rsvp', methods=['GET', 'POST'])

@@ -41,7 +41,7 @@
     </div>
 
     <div class="block">
-      <a href="{{ url_for('rsvp') }}" class="button">RSVP</a>
+      <a href="{{ url_for('rsvp', email=email) }}" class="button">RSVP</a>
     </div>
   </div>
 
@@ -77,7 +77,7 @@
       <div class="block">
         <div class="title">Visit</div>
         <div class="content">Where else can you go on a door tour?</div>
-        <a target="_blank" href="http://www.visitpalmsprings.com/">Check it out</a>
+        <a target="_blank" href="https://www.wsj.com/articles/an-insiders-guide-to-palm-springs-californias-desert-revival-1513692213">Check it out</a>
       </div>
       <img src="{{url_for('static', filename='visit.png')}}">
     </div>
