@@ -168,9 +168,15 @@ label {
 }
 /* FOOTER */
 .footer {
+  font-size: 0.9em;
   background-color: var(--space-blue);
   color: white;
   padding: var(--base-spacing);
+}
+.footer a {
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--main-red);
 }
 
 
@@ -212,7 +218,6 @@ label {
     justify-content: flex-start;
   }
   .hero .title {
-    margin-top: 10px;
     font-size: 0.8em;
   }
   .hero .title span {

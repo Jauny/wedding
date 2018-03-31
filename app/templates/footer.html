@@ -1,5 +1,5 @@
 <div class="footer">
-  <div>It's Me Margaux</div>
-  <div>All Right Reserved</div>
-  <div>Made with ❤️ and 🐶</div>
+  <div><a href="{{ url_for('index', email=request.args.get('email')) }} ">Home</a></div>
+  <div><a href="{{ url_for('rsvp', email=request.args.get('email')) }} ">RSVP</a></div>
+  <div><a target="_blank" href="mailto:reservations@parkerpalmsprings.com?Subject=Room%20for%20IHO:%20Wong%20Pepin%20Wedding">Room Reservations</a></div>
 </div>
