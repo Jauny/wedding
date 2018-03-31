@@ -18,13 +18,15 @@ def index():
 @log_endpoint(logger)
 def rsvp():
     """RSVP to an invitation."""
+    invite = None
+
     if request.method == 'GET':
         email = request.args.get('email')
         if email:
             invite = Invite.getFromEmail(email)
 
         if not invite:
-            logger.warning({
+            logger.info({
                 'msg': 'no invite found from email param',
                 'email': str(email)})
             return render_template('rsvp.html')
