@@ -4,7 +4,7 @@
   font-family: 'Abril Fatface', cursive;
   font-family: 'Libre Baskerville', serif;
 */
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Libre+Baskerville|Montserrat:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Libre+Baskerville|Montserrat:400,500,700');
 
 /* VARIABLES */
 :root {
@@ -74,7 +74,7 @@ button, .button, .radio-button label {
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
   line-height: var(--input-height);
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   text-transform: uppercase;
   font-size: var(--content-size);
@@ -163,7 +163,9 @@ label {
   margin-left: 10px;
   text-transform: uppercase;
 }
-
+.header .menu ul li a {
+  font-weight: 500;
+}
 /* FOOTER */
 .footer {
   background-color: var(--space-blue);
@@ -176,6 +178,8 @@ label {
 .hero {
   overflow: hidden;
   background-color: var(--header-color);
+  display: flex;
+  justify-content: center;
 }
 .hero .title {
   position: absolute;
@@ -197,14 +201,16 @@ label {
   letter-spacing: normal;
 }
 .hero img {
-  width: 100%;
+  width: 115%;
   height: 100%;
-  max-width: 1024px;
   display: block;
   margin: auto;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 520px) {
+  .hero {
+    justify-content: flex-start;
+  }
   .hero .title {
     margin-top: 10px;
     font-size: 0.8em;
@@ -213,8 +219,8 @@ label {
     font-size: 2em;
   }
   .hero img {
-    width: 150%;
-    margin-left: -15%;
+    width: 225%;
+    margin-left: -25%;
   }
 }
 
@@ -229,6 +235,8 @@ label {
 }
 .info .block .content {
   text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.7px;
 }
 .block .title {
   font-size: var(--title-size);
@@ -261,16 +269,16 @@ label {
 
 .mosaic .cell .block {
   position: absolute;
-  padding: 15px;
+  padding: 17px;
 }
 .mosaic .cell .block .content {
-  font-weight: 600;
+  font-weight: 500;
 }
 .mosaic .cell .block a {
   margin-top: 5px;
   color: var(--main-red);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   display: inline-block;
 }
 .mosaic .cell img {
@@ -295,15 +303,13 @@ label {
   left: 50px;
 }
 @media only screen and (max-width: 780px) {
+  .presents {
+    text-align: center;
+    flex-flow: column-reverse;
+  }
   .presents img {
     position: relative;
     left: 10px;
-  }
-}
-@media only screen and (max-width: 520px) {
-  .presents img {
-    height: 150px;
-    bottom: -35px;
   }
 }
 
