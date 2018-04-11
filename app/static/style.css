@@ -227,15 +227,10 @@ label {
   .hero {
     justify-content: flex-start;
   }
-  .hero .title {
-    font-size: 0.8em;
-  }
-  .hero .title span {
-    font-size: 2em;
-  }
   .hero img {
     width: 225%;
     margin-left: -25%;
+    margin-top: 50px;
   }
 }
 
