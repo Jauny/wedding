@@ -1,5 +1,17 @@
 {% extends 'layout.html' %}
 
+{% macro select(name, label, placeholder, options) -%}
+  <div class="select">
+    <label for="{{name}}">{{label}}</label>
+    <select name="{{name}}" id="{{name}}" required>
+      <option value="" disabled selected>{{placeholder}}</option>
+      {% for option in options %}
+        <option value="{{option.get('value')}}">{{option.get('text')}}</option>
+      {% endfor %}
+    </select>
+  </div>
+{%- endmacro %}
+
 {% block content %}
   <div class="rsvp--form">
 
@@ -8,42 +20,42 @@
 
       <div class="rsvp--form__radio">
         <input type="email" name="email" value="{{invite.email}}" hidden>
-        <label>Will you be attending the wedding?</label>
-        <div class="radio-button">
-          <input required id="rsvpyes" type="radio" name="rsvp" value="yes">
-          <label for="rsvpyes" class="happy">Count me in</label>
-        </div>
-        <div class="radio-button">
-          <input required id="rsvpno" type="radio" name="rsvp" value="no">
-          <label for="rsvpno" class="sad">Count me out</label>
-        </div>
+        {{ select(
+            'rsvp', 'Will you be attending the wedding?', 'Select an answer', [
+            {'value': 'yes', 'text': 'Count me in'},
+            {'value': 'no', 'text': 'Count me out'}]) }}
+        {{ select(
+            'food', 'What will you feel like eating?', 'Select a main course', [
+            {'value': 'meat', 'text': 'Prime New York Strip Steak'},
+            {'value': 'fish', 'text': 'Caramelized Scallops'},
+            {'value': 'veggies', 'text': 'Forest Mushroom En Croute'}]) }}
       </div>
 
       {% if plusone %}
         <div class="rsvp--form__radio">
           <input type="email" name="plusone_email" value="{{plusone.email}}" hidden>
-          <label>Will {{ plusone.name }} be joining as well?</label>
-          <div class="radio-button">
-            <input required id="plusoneyes" type="radio" name="plusone_rsvp" value="yes">
-            <label for="plusoneyes" class="happy">Count them in</label>
-          </div>
-          <div class="radio-button">
-            <input required id="plusoneno" type="radio" name="plusone_rsvp" value="no">
-            <label for="plusoneno" class="sad">Count them out</label>
-          </div>
+          {{ select(
+            'plusone_rsvp',
+            'Will {} be attending the wedding?'.format(plusone.name),
+            'Select an answer', [
+              {'value': 'yes', 'text': 'Count them in'},
+              {'value': 'no', 'text': 'Count them out'}]) }}
+
+          {{ select(
+              'plusone_food', 'What will they feel like eating?', 'Select a main course', [
+              {'value': 'meat', 'text': 'Prime New York Strip Steak'},
+              {'value': 'fish', 'text': 'Caramelized Scallops'},
+              {'value': 'veggies', 'text': 'Forest Mushroom En Croute'}]) }}
         </div>
       {% endif %}
 
       <div class="rsvp--form__radio">
-        <label>Will you be attending the rehearsal dinner Friday evening?</label>
-        <div class="radio-button">
-          <input required id="rehearsalyes" type="radio" name="rehearsal" value="yes">
-          <label for="rehearsalyes" class="happy">Count me in</label>
-        </div>
-        <div class="radio-button">
-          <input required id="rehearsalno" type="radio" name="rehearsal" value="no">
-          <label for="rehearsalno" class="sad">Count me out</label>
-        </div>
+        {{ select(
+          'rehearsal',
+          'Will you be attending the rehearsal dinner Friday evening?',
+          'Select an answer', [
+            {'value': 'yes', 'text': 'Count me in'},
+            {'value': 'no', 'text': 'Count me out'}]) }}
       </div>
 
       <button type="submit">SUBMIT</button>

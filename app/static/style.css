@@ -56,11 +56,20 @@ a:visited {
 }
 
 /* FORMS */
-input, button, .button, .radio-button label {
+input, button, .button, .radio-button label, select {
   height: var(--input-height);
   width: var(--input-width);
   margin: 10px 0 0 0;
   box-sizing: border-box;
+}
+
+select {
+  background-color: white;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+select:valid {
+  border: 2px solid var(--main-red);
 }
 
 input {
@@ -71,7 +80,7 @@ input:focus {
   outline: 2px solid var(--main-red);
 }
 
-button, .button, .radio-button label {
+button, .button, .radio-button label, select {
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
   line-height: var(--input-height);
@@ -101,7 +110,7 @@ form:invalid button {
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
-.radio-button label {
+.radio-button label, select {
   padding: 0 10px;
   border: 2px solid var(--light-grey);
   color: var(--main-red);
@@ -345,4 +354,12 @@ label {
   font-family: 'Libre Baskerville', serif;
   font-size: 1.2em;
   margin-bottom: 10px;
+}
+
+.rsvp--done {
+  text-align: center;
+  padding: var(--base-spacing) 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
 }
