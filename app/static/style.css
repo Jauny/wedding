@@ -85,7 +85,7 @@ button, .button, .radio-button label, select {
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
   line-height: var(--input-height);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
   font-size: var(--content-size);
@@ -266,6 +266,7 @@ label {
 .block .content {
   font-size: var(--content-size);
   line-height: 18px;
+  font-size: 1.2em;
 }
 
 .mosaic {
@@ -293,12 +294,13 @@ label {
 }
 .mosaic .cell .block .content {
   font-weight: 500;
+  font-size: 1.2em;
 }
 .mosaic .cell .block a {
   margin-top: 5px;
   color: var(--main-red);
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   display: inline-block;
 }
 .mosaic .cell img {

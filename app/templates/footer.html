@@ -1,3 +1,5 @@
 <div class="footer">
-  <a href="{{ url_for('rsvp', email=request.args.get('email')) }}" class="button">RSVP</a>
+  {% if 'rsvp' not in request.path %}
+    <a href="{{ url_for('rsvp', email=request.args.get('email')) }}" class="button">RSVP</a>
+  {% endif %}
 </div>
