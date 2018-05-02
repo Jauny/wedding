@@ -77,7 +77,7 @@ class Invite:
         return None
 
     @classmethod
-    def updateRSVPForEmail(cls, email, rsvp, food, rehearsal):
+    def updateRSVPForEmail(cls, email, rsvp, food, rehearsal, comments=""):
         """Update invite for email with rsvp."""
         invite = cls.getFromEmail(email)
         if not invite:
@@ -88,7 +88,8 @@ class Invite:
             'fields': {
                 'rsvp': rsvp,
                 'rehearsal': rehearsal,
-                'food': food
+                'food': food,
+                'comments': comments
             }
         }
 

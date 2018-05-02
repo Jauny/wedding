@@ -76,9 +76,10 @@ def rsvp_confirm():
     plusone_rsvp = request.form.get('plusone_rsvp')
     plusone_food = request.form.get('plusone_food')
     rehearsal = request.form.get('rehearsal')
+    comments = request.form.get('comments')
 
     # update rsvp invite
-    resp = Invite.updateRSVPForEmail(email, rsvp, food, rehearsal)
+    resp = Invite.updateRSVPForEmail(email, rsvp, food, rehearsal, comments)
     if resp.get('error', None):
         logger.error({
             'msg': 'error updating rsvp',
@@ -86,14 +87,18 @@ def rsvp_confirm():
             'email': str(email),
             'rsvp': str(rsvp),
             'food': str(food),
-            'rehearsal': str(rehearsal)})
+            'rehearsal': str(rehearsal),
+            'comments': str(comments),
+        })
     else:
         logger.info({
             'msg': 'updated rsvp',
             'email': str(email),
             'rsvp': str(rsvp),
             'food': str(food),
-            'rehearsal': str(rehearsal)})
+            'rehearsal': str(rehearsal),
+            'comments': str(comments),
+        })
 
     # update plusone invite
     if plusone_email:

@@ -68,12 +68,11 @@ a:visited {
 }
 
 /* FORMS */
-input, button, .button, .radio-button label, select {
+input, textarea, button, .button, .radio-button label, select {
   height: var(--input-height);
   width: var(--input-width);
   margin: 10px 0 0 0;
   box-sizing: border-box;
-  text-align: center;
 }
 
 select {
@@ -85,12 +84,16 @@ select:valid {
   border: 2px solid var(--main-red);
 }
 
-input {
+input, textarea {
   padding: 10px;
   border: 2px solid var(--light-grey);
 }
-input:focus {
+input:focus, textarea:focus {
   outline: 2px solid var(--main-red);
+}
+textarea {
+  height: 75px;
+  resize: none;
 }
 
 button, .button, .radio-button label, select {
