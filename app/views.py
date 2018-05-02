@@ -14,6 +14,12 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/menu', methods=['GET'])
+@log_endpoint(logger)
+def menu():
+    return render_template('menu.html')
+
+
 @app.route('/rsvp', methods=['GET', 'POST'])
 @log_endpoint(logger)
 def rsvp():

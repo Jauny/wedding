@@ -108,6 +108,7 @@ button, .button, .radio-button label, select {
 button, .button {
   background-color: var(--main-red);
   color: white;
+  text-align: center;
 }
 button:focus, .button:focus {
   outline: none;
@@ -278,6 +279,12 @@ label {
   line-height: 18px;
   font-size: 1.2em;
   font-weight: 500;
+  margin-bottom: var(--base-spacing);
+}
+.block .content__small {
+  font-weight: normal;
+  text-transform: none;
+  font-size: 0.9em;
 }
 
 .mosaic {
