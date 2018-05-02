@@ -6,17 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class=flashes>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  {% include 'header.html' %}
-  {% block content %}{% endblock %}
-  {% include 'footer.html' %}
+  <div class="wrapper">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% include 'header.html' %}
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+    {% include 'footer.html' %}
+  </div>
 </body>
 </html>
