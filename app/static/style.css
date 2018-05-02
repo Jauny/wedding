@@ -268,6 +268,7 @@ label {
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.7px;
+  margin-bottom: var(--base-spacing);
 }
 .block .title {
   font-size: var(--title-size);
@@ -279,7 +280,6 @@ label {
   line-height: 18px;
   font-size: 1.2em;
   font-weight: 500;
-  margin-bottom: var(--base-spacing);
 }
 .block .content__small {
   font-weight: normal;
