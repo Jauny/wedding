@@ -197,11 +197,6 @@ label {
   display: flex;
   justify-content: space-around;
 }
-.footer a {
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--main-red);
-}
 
 
 /* CONTENT */
