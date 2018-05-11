@@ -20,6 +20,12 @@ def menu():
     return render_template('menu.html')
 
 
+@app.route('/rooms', methods=['GET'])
+@log_endpoint(logger)
+def rooms():
+    return render_template('rooms.html')
+
+
 @app.route('/rsvp', methods=['GET', 'POST'])
 @log_endpoint(logger)
 def rsvp():

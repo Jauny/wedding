@@ -287,6 +287,12 @@ label {
   letter-spacing: 0.7px;
   margin-bottom: var(--base-spacing);
 }
+.info .block .highlight {
+  color: var(--main-red);
+  text-transform: none;
+  font-size: 0.9em;
+  font-weight: bold;
+}
 
 .menu .block .title {
   margin-bottom: 20px;
