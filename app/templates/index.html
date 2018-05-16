@@ -97,7 +97,7 @@
       <div class="block">
         <div class="title">Eat</div>
         <div class="content">Carnivore, vegetarian or seafood lover?</div>
-        <a target="_blank" href="{{ url_for('rsvp', email=request.args.get('email')) }}">see menu</a>
+        <a target="_blank" href="{{ url_for('menu', email=request.args.get('email')) }}">see menu</a>
       </div>
       <img src="{{url_for('static', filename='eat.png')}}">
     </div>

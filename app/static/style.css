@@ -292,6 +292,7 @@ label {
   text-transform: none;
   font-size: 0.9em;
   font-weight: bold;
+  margin-top: 5px;
 }
 
 .menu .block .title {
