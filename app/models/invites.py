@@ -81,7 +81,7 @@ class Invite:
         """Update invite for email with rsvp."""
         invite = cls.getFromEmail(email)
         if not invite:
-            return None
+            return {'error': 'no invite found for email', 'email': email}
 
         url = cls.base_url_post.format(id=invite.get('id'))
         data = {
