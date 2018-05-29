@@ -8,11 +8,11 @@ def log_endpoint(logger):
         def wrapper(*args, **kwargs):
             form = {}
             for k, v in request.form.iteritems():
-                form[str(k)] = str(v)
+                form[k] = v
 
             params = {}
             for k, v in request.args.iteritems():
-                params[str(k)] = str(v)
+                params[k] = v
 
             logger.info({
                 'msg': 'received {method} request to {endpoint}'.format(

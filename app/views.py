@@ -100,7 +100,7 @@ def rsvp_confirm():
             'rsvp': str(rsvp),
             'food': str(food),
             'rehearsal': str(rehearsal),
-            'comments': str(comments),
+            'comments': comments,
         })
     else:
         logger.info({
@@ -109,7 +109,7 @@ def rsvp_confirm():
             'rsvp': str(rsvp),
             'food': str(food),
             'rehearsal': str(rehearsal),
-            'comments': str(comments),
+            'comments': comments,
         })
 
     # update plusone invite
