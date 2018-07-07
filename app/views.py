@@ -30,6 +30,11 @@ def rooms():
 @log_endpoint(logger)
 def rsvp():
     """RSVP to an invitation."""
+    # error message, RSVPs are over
+    return render_template(
+        'rsvp.html',
+        error='Oh no! You missed the boat. Unfortunately it\'s too late to RSVP.')
+
     invite = None
 
     if request.method == 'GET':
